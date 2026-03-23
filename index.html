@@ -9,9 +9,8 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 :root{
-  --bg:#fafaf8; --ink:#111110; --ink2:#444440; --muted:#888880;
-  --line:#e5e4df; --accent:#2563eb; --accent2:#7c3aed;
-  --card:#ffffff;
+  --bg:#fafaf8;--ink:#111110;--ink2:#444440;--muted:#888880;
+  --line:#e5e4df;--accent:#2563eb;--accent2:#7c3aed;--card:#ffffff;
 }
 body{font-family:'Geist',sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden;cursor:none}
 
@@ -20,24 +19,43 @@ body{font-family:'Geist',sans-serif;background:var(--bg);color:var(--ink);overfl
 #cur.h{width:5px;height:5px;background:#e84c1e}
 #cur-ring.h{width:56px;height:56px;opacity:.12}
 
-nav{position:fixed;top:0;left:0;right:0;z-index:200;height:62px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;background:rgba(250,250,248,.8);backdrop-filter:blur(20px);border-bottom:1px solid transparent;transition:border-color .3s}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:62px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;background:rgba(250,250,248,.85);backdrop-filter:blur(20px);border-bottom:1px solid transparent;transition:border-color .3s}
 nav.scrolled{border-color:var(--line)}
 .nav-logo{font-family:'Instrument Serif',serif;font-size:1.2rem;text-decoration:none;color:var(--ink);cursor:none}
 .nav-links{display:flex;gap:28px;list-style:none}
 .nav-links a{font-size:.8rem;font-weight:500;letter-spacing:.04em;color:var(--muted);text-decoration:none;transition:color .2s;cursor:none}
 .nav-links a:hover{color:var(--ink)}
+.nav-right{display:flex;align-items:center;gap:14px}
 .nav-cta{padding:8px 20px;background:var(--ink);color:var(--bg);font-size:.78rem;font-weight:500;border-radius:100px;text-decoration:none;transition:background .2s,transform .2s;cursor:none}
 .nav-cta:hover{background:var(--accent);transform:translateY(-1px)}
 
+/* LANGUAGE TOGGLE */
+.lang-toggle{
+  display:flex;align-items:center;gap:0;
+  background:var(--line);border-radius:100px;
+  padding:3px;overflow:hidden;
+}
+.lang-btn{
+  padding:5px 13px;font-family:'Geist Mono',monospace;
+  font-size:.68rem;letter-spacing:.1em;font-weight:500;
+  border:none;background:transparent;color:var(--muted);
+  border-radius:100px;cursor:none;transition:all .25s;
+}
+.lang-btn.active{background:var(--ink);color:#fff}
+
+/* BLOBS */
 .blob{position:fixed;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:0;opacity:.4;animation:flt 9s ease-in-out infinite}
 .blob1{width:600px;height:600px;background:radial-gradient(circle,#dbeafe 0%,transparent 70%);top:-200px;right:-150px}
 .blob2{width:400px;height:400px;background:radial-gradient(circle,#ede9fe 0%,transparent 70%);bottom:200px;left:-100px;animation-delay:-4.5s}
 @keyframes flt{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-40px) scale(1.06)}}
 
+/* HERO */
 .hero{min-height:100vh;display:grid;grid-template-columns:1fr 440px;gap:60px;align-items:center;max-width:1150px;margin:0 auto;padding:120px 48px 80px;position:relative;z-index:1}
-.available{display:inline-flex;align-items:center;gap:8px;background:#f0fdf4;border:1px solid #bbf7d0;padding:6px 14px;border-radius:100px;font-family:'Geist Mono',monospace;font-size:.65rem;letter-spacing:.12em;color:#16a34a;margin-bottom:28px}
+.available{display:inline-flex;align-items:center;gap:8px;background:#f0fdf4;border:1px solid #bbf7d0;padding:6px 14px;border-radius:100px;font-family:'Geist Mono',monospace;font-size:.65rem;letter-spacing:.12em;color:#16a34a;margin-bottom:12px}
 .pdot{width:7px;height:7px;background:#22c55e;border-radius:50%;animation:pd 2s infinite}
 @keyframes pd{0%,100%{opacity:1}50%{opacity:.25}}
+.disability-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(239,246,255,.8);border:1px solid #bfdbfe;padding:6px 14px;border-radius:100px;font-family:'Geist Mono',monospace;font-size:.65rem;letter-spacing:.08em;color:#1d4ed8;margin-bottom:20px}
 .hero-label{font-family:'Geist Mono',monospace;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:18px}
 .hero-name{font-family:'Instrument Serif',serif;font-size:clamp(3.5rem,6.5vw,6rem);line-height:.95;letter-spacing:-.025em;margin-bottom:26px}
 .hero-name em{font-style:italic;color:var(--accent)}
@@ -53,15 +71,6 @@ nav.scrolled{border-color:var(--line)}
 .sv{font-family:'Instrument Serif',serif;font-size:2.4rem;line-height:1;color:var(--ink)}
 .sl{font-family:'Geist Mono',monospace;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:4px}
 
-/* disability badge */
-.disability-badge{
-  display:inline-flex;align-items:center;gap:8px;
-  background:rgba(239,246,255,.8);border:1px solid #bfdbfe;
-  padding:6px 14px;border-radius:100px;
-  font-family:'Geist Mono',monospace;font-size:.65rem;
-  letter-spacing:.08em;color:#1d4ed8;margin-bottom:16px;
-}
-
 .photo-wrap{border-radius:22px;overflow:hidden;aspect-ratio:3/4;background:#1a1a1a;box-shadow:0 20px 60px rgba(0,0,0,.12),0 4px 16px rgba(0,0,0,.06);position:relative;transition:transform .4s ease}
 .photo-wrap:hover{transform:translateY(-6px)}
 .photo-wrap img{width:100%;height:100%;object-fit:cover;object-position:center 15%;display:block}
@@ -70,6 +79,7 @@ nav.scrolled{border-color:var(--line)}
 .pb-role{font-size:.68rem;font-family:'Geist Mono',monospace;color:var(--muted);letter-spacing:.06em;margin-top:2px}
 .pb-flag{font-size:1.4rem}
 
+/* SECTIONS */
 section{padding:110px 0;position:relative;z-index:1}
 .container{max-width:1100px;margin:0 auto;padding:0 48px}
 .s-label{font-family:'Geist Mono',monospace;font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;display:flex;align-items:center;gap:10px}
@@ -77,57 +87,26 @@ section{padding:110px 0;position:relative;z-index:1}
 .s-title{font-family:'Instrument Serif',serif;font-size:clamp(2.2rem,4vw,3.6rem);line-height:1.05;letter-spacing:-.02em;margin-bottom:56px}
 .s-title em{font-style:italic;color:var(--accent)}
 
-/* SKILLS - dark bg, white numbers, flip on click */
+/* SKILLS */
 .skills-bg{background:var(--ink)}
 .skills-bg .s-label{color:#93c5fd}
 .skills-bg .s-label::before{background:#93c5fd}
 .skills-bg .s-title{color:#f8fafc}
 .skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.07);border-radius:16px;overflow:hidden}
-
-/* FLIP CARD */
-.sk{
-  background:var(--ink);
-  perspective:900px;
-  cursor:none;
-  min-height:180px;
-}
-.sk-inner{
-  position:relative;width:100%;height:100%;
-  transform-style:preserve-3d;
-  transition:transform .55s cubic-bezier(.4,0,.2,1);
-  min-height:180px;
-}
+.sk-hint-global{font-family:'Geist Mono',monospace;font-size:.62rem;letter-spacing:.1em;color:rgba(255,255,255,.22);margin-bottom:24px;margin-top:-40px}
+.sk{background:var(--ink);perspective:900px;cursor:none;min-height:180px}
+.sk-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.4,0,.2,1);min-height:180px}
 .sk.flipped .sk-inner{transform:rotateY(180deg)}
-.sk-front,.sk-back{
-  position:absolute;inset:0;
-  padding:34px 28px;
-  backface-visibility:hidden;
-  -webkit-backface-visibility:hidden;
-}
-.sk-back{
-  transform:rotateY(180deg);
-  background:var(--accent);
-  display:flex;flex-direction:column;justify-content:center;
-}
-.sk-n{
-  font-family:'Instrument Serif',serif;
-  font-size:3rem;
-  color:rgba(255,255,255,.18); /* WHITE now - was .05 */
-  line-height:1;margin-bottom:10px;
-}
+.sk-front,.sk-back{position:absolute;inset:0;padding:34px 28px;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.sk-back{transform:rotateY(180deg);background:var(--accent);display:flex;flex-direction:column;justify-content:center}
+.sk-n{font-family:'Instrument Serif',serif;font-size:3rem;color:rgba(255,255,255,.18);line-height:1;margin-bottom:10px}
 .sk-t{font-size:.9rem;font-weight:500;color:#f1f5f9;margin-bottom:7px}
 .sk-d{font-size:.76rem;color:rgba(241,245,249,.45);line-height:1.65;font-weight:300}
-.sk-back-t{font-family:'Instrument Serif',serif;font-size:1.3rem;color:#fff;margin-bottom:10px}
-.sk-back-d{font-size:.8rem;color:rgba(255,255,255,.75);line-height:1.65;font-weight:300}
-.sk-hint{font-family:'Geist Mono',monospace;font-size:.6rem;letter-spacing:.1em;color:rgba(255,255,255,.25);margin-top:8px;text-align:right}
+.sk-back-t{font-family:'Instrument Serif',serif;font-size:1.2rem;color:#fff;margin-bottom:10px}
+.sk-back-d{font-size:.78rem;color:rgba(255,255,255,.78);line-height:1.65;font-weight:300}
+.sk-hint{font-family:'Geist Mono',monospace;font-size:.58rem;letter-spacing:.1em;color:rgba(255,255,255,.22);margin-top:8px;text-align:right}
 
-/* hover glow */
-.sk:hover .sk-front::after{
-  content:'';position:absolute;bottom:0;left:0;width:100%;height:2px;background:#93c5fd;
-  animation:wipe .4s ease forwards;
-}
-@keyframes wipe{from{width:0}to{width:100%}}
-
+/* TIMELINE */
 .tl{position:relative;padding-left:36px}
 .tl::before{content:'';position:absolute;left:6px;top:10px;bottom:0;width:1.5px;background:linear-gradient(to bottom,var(--accent) 0%,var(--line) 100%)}
 .tl-item{position:relative;margin-bottom:54px;opacity:0;transform:translateX(-24px);transition:opacity .65s ease,transform .65s ease}
@@ -142,6 +121,7 @@ section{padding:110px 0;position:relative;z-index:1}
 .tag{font-family:'Geist Mono',monospace;font-size:.62rem;letter-spacing:.07em;padding:4px 11px;border:1px solid var(--line);border-radius:100px;color:var(--muted);transition:all .2s}
 .tl-item:hover .tag{border-color:rgba(37,99,235,.3);color:var(--accent)}
 
+/* CERTS */
 .certs-bg{background:#f4f3ef}
 .certs-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
 .cert-card{border-radius:18px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.07);position:relative;transition:transform .4s ease,box-shadow .4s ease;cursor:none;background:#fff}
@@ -152,6 +132,7 @@ section{padding:110px 0;position:relative;z-index:1}
 .cert-issuer{font-family:'Geist Mono',monospace;font-size:.62rem;letter-spacing:.1em;color:rgba(255,255,255,.65);margin-bottom:4px}
 .cert-name{font-family:'Instrument Serif',serif;font-size:1.05rem;color:#fff}
 
+/* LANGUAGES */
 .lang-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px}
 .lang-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:11px}
 .lang-name-big{font-family:'Instrument Serif',serif;font-size:1.55rem}
@@ -169,34 +150,19 @@ section{padding:110px 0;position:relative;z-index:1}
 .proj-title{font-family:'Instrument Serif',serif;font-size:1.7rem}
 .proj-desc{font-size:.86rem;line-height:1.72;color:var(--ink2);font-weight:300;margin-bottom:18px}
 .proj-stack{display:flex;flex-wrap:wrap;gap:6px}
-.proj-link{
-  display:inline-flex;align-items:center;gap:6px;
-  font-family:'Geist Mono',monospace;font-size:.7rem;
-  letter-spacing:.08em;color:var(--accent);text-decoration:none;
-  padding:8px 16px;border:1px solid rgba(37,99,235,.25);
-  border-radius:100px;transition:all .2s;cursor:none;flex-shrink:0;
-}
+.proj-link{display:inline-flex;align-items:center;gap:6px;font-family:'Geist Mono',monospace;font-size:.7rem;letter-spacing:.08em;color:var(--accent);text-decoration:none;padding:8px 16px;border:1px solid rgba(37,99,235,.25);border-radius:100px;transition:all .2s;cursor:none;flex-shrink:0}
 .proj-link:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
-
-/* OWL special card */
-.owl-card{
-  background:linear-gradient(135deg,#0f172a 0%,#1e1b4b 100%);
-  border:1px solid rgba(124,58,237,.3);
-  color:#f8fafc;
-}
+.owl-card{background:linear-gradient(135deg,#0f172a 0%,#1e1b4b 100%);border:1px solid rgba(124,58,237,.3);color:#f8fafc}
 .owl-card .proj-title{color:#f8fafc}
 .owl-card .proj-desc{color:rgba(248,250,252,.6)}
 .owl-card .proj-lbl{color:#a78bfa}
 .owl-card .tag{border-color:rgba(167,139,250,.25);color:rgba(167,139,250,.8)}
 .owl-card .proj-link{color:#a78bfa;border-color:rgba(167,139,250,.3)}
 .owl-card .proj-link:hover{background:#7c3aed;color:#fff;border-color:#7c3aed}
-.yt-stat{
-  display:inline-flex;align-items:center;gap:6px;
-  font-family:'Geist Mono',monospace;font-size:.65rem;
-  color:rgba(248,250,252,.4);margin-top:12px;
-}
+.yt-stat{display:inline-flex;align-items:center;gap:6px;font-family:'Geist Mono',monospace;font-size:.65rem;color:rgba(248,250,252,.4);margin-top:12px}
 .yt-dot{width:6px;height:6px;background:#ef4444;border-radius:50%}
 
+/* CONTACT */
 .contact-bg{background:var(--ink)}
 .contact-bg .s-label{color:#93c5fd}
 .contact-bg .s-label::before{background:#93c5fd}
@@ -208,7 +174,6 @@ section{padding:110px 0;position:relative;z-index:1}
 .clink:hover{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.18);color:#f8fafc;transform:translateX(5px)}
 .clink-icon{font-size:1rem;flex-shrink:0}
 .clink-lbl{font-family:'Geist Mono',monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(248,250,252,.28);display:block;margin-bottom:1px}
-
 .cf{display:flex;flex-direction:column;gap:14px}
 .fr{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .ff{display:flex;flex-direction:column;gap:7px}
@@ -223,6 +188,10 @@ section{padding:110px 0;position:relative;z-index:1}
 footer{background:#080808;padding:26px 48px;display:flex;justify-content:space-between;align-items:center;position:relative;z-index:1}
 .ft-n{font-family:'Instrument Serif',serif;font-size:.95rem;color:rgba(248,250,252,.18)}
 .ft-note{font-family:'Geist Mono',monospace;font-size:.6rem;color:rgba(248,250,252,.12);letter-spacing:.1em}
+
+/* TRANSITIONS for language switch */
+[data-pl],[data-en]{transition:opacity .3s ease}
+body.switching [data-pl],body.switching [data-en]{opacity:0}
 
 .rv{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
 .rv.vis{opacity:1;transform:none}
@@ -256,33 +225,52 @@ footer{background:#080808;padding:26px 48px;display:flex;justify-content:space-b
 <nav id="nav">
   <a class="nav-logo" href="#">D. Ruchała</a>
   <ul class="nav-links">
-    <li><a href="#about">O mnie</a></li>
-    <li><a href="#experience">Doświadczenie</a></li>
-    <li><a href="#certs">Certyfikaty</a></li>
-    <li><a href="#projects">Projekty</a></li>
-    <li><a href="#contact">Kontakt</a></li>
+    <li><a href="#about"><span data-pl>O mnie</span><span data-en style="display:none">About</span></a></li>
+    <li><a href="#experience"><span data-pl>Doświadczenie</span><span data-en style="display:none">Experience</span></a></li>
+    <li><a href="#certs"><span data-pl>Certyfikaty</span><span data-en style="display:none">Certificates</span></a></li>
+    <li><a href="#projects"><span data-pl>Projekty</span><span data-en style="display:none">Projects</span></a></li>
+    <li><a href="#contact"><span data-pl>Kontakt</span><span data-en style="display:none">Contact</span></a></li>
   </ul>
-  <a href="mailto:dawidar27@gmail.com" class="nav-cta">Napisz →</a>
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <button class="lang-btn active" id="btn-pl" onclick="setLang('pl')">PL</button>
+      <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+    <a href="mailto:dawidar27@gmail.com" class="nav-cta">
+      <span data-pl>Napisz →</span><span data-en style="display:none">Contact →</span>
+    </a>
+  </div>
 </nav>
 
+<!-- HERO -->
 <div class="hero" id="about">
   <div class="hero-left">
-    <div class="available"><span class="pdot"></span>Dostępny do pracy · Remote · Freelance</div>
-    <div class="disability-badge">♿ Osoba z niepełnosprawnością · Renta</div>
+    <div class="available"><span class="pdot"></span>
+      <span data-pl>Dostępny do pracy · Remote · Freelance</span>
+      <span data-en style="display:none">Available for work · Remote · Freelance</span>
+    </div>
+    <div class="disability-badge">♿
+      <span data-pl>Osoba z niepełnosprawnością · Renta</span>
+      <span data-en style="display:none">Person with disability · Disability pension</span>
+    </div>
     <p class="hero-label">Polish Language Expert / AI Specialist</p>
     <h1 class="hero-name">Dawid<br><em>Ruchała</em></h1>
     <p class="hero-desc">
-      <strong>Native Polish speaker</strong> z technicznym wykształceniem inżynierskim. Specjalista w <strong>weryfikacji jakości</strong>, strukturyzowanej informacji zwrotnej i detekcji anomalii.<br><br>
-      7+ lat doświadczenia QA przekształcam w <strong>AI training & Polish language evaluation</strong>. Praca zdalna idealna ze względu na status osoby z niepełnosprawnością.
+      <span data-pl><strong>Native Polish speaker</strong> z technicznym wykształceniem inżynierskim. Specjalista w <strong>weryfikacji jakości</strong>, strukturyzowanej informacji zwrotnej i detekcji anomalii.<br><br>7+ lat doświadczenia QA przekształcam w <strong>AI training & Polish language evaluation</strong>. Praca zdalna idealna ze względu na status osoby z niepełnosprawnością.</span>
+      <span data-en style="display:none"><strong>Native Polish speaker</strong> with a technical engineering background. Specialist in <strong>quality verification</strong>, structured feedback and anomaly detection.<br><br>Transitioning 7+ years of QA experience into <strong>AI training & Polish language evaluation</strong>. Remote work is ideal due to disability status.</span>
     </p>
     <div class="hero-actions">
-      <a href="mailto:dawidar27@gmail.com" class="btn btn-dark">✉ Napisz do mnie</a>
-      <a href="#experience" class="btn btn-outline">Zobacz CV ↓</a>
+      <a href="mailto:dawidar27@gmail.com" class="btn btn-dark">
+        <span data-pl>✉ Napisz do mnie</span><span data-en style="display:none">✉ Contact me</span>
+      </a>
+      <a href="#experience" class="btn btn-outline">
+        <span data-pl>Zobacz CV ↓</span><span data-en style="display:none">View CV ↓</span>
+      </a>
     </div>
     <div class="hero-stats">
-      <div><div class="sv" data-target="7">0</div><div class="sl">Lat QA</div></div>
-      <div><div class="sv" data-target="4">0</div><div class="sl">Firmy</div></div>
-      <div><div class="sv" data-target="2">0</div><div class="sl">Cert. AI</div></div>
+      <div><div class="sv" data-target="7">0</div><div class="sl"><span data-pl>Lat QA</span><span data-en style="display:none">Yrs QA</span></div></div>
+      <div><div class="sv" data-target="4">0</div><div class="sl"><span data-pl>Firmy</span><span data-en style="display:none">Companies</span></div></div>
+      <div><div class="sv" data-target="2">0</div><div class="sl"><span data-pl>Cert. AI</span><span data-en style="display:none">AI Certs</span></div></div>
     </div>
   </div>
   <div class="hero-right rv-r">
@@ -302,44 +290,44 @@ footer{background:#080808;padding:26px 48px;display:flex;justify-content:space-b
 <!-- SKILLS -->
 <section class="skills-bg">
   <div class="container">
-    <p class="s-label rv">Kompetencje</p>
+    <p class="s-label rv"><span data-pl>Kompetencje</span><span data-en style="display:none">Competencies</span></p>
     <h2 class="s-title rv">Skills &<br>Expertise</h2>
-    <p style="font-family:'Geist Mono',monospace;font-size:.65rem;letter-spacing:.1em;color:rgba(255,255,255,.25);margin-bottom:24px;margin-top:-40px" class="rv">↓ Kliknij kartę aby zobaczyć więcej</p>
+    <p class="sk-hint-global rv"><span data-pl>↓ Kliknij kartę aby zobaczyć więcej</span><span data-en style="display:none">↓ Click a card to learn more</span></p>
     <div class="skills-grid rv">
       <div class="sk" onclick="this.classList.toggle('flipped')">
         <div class="sk-inner">
-          <div class="sk-front"><div class="sk-n">01</div><div class="sk-t">Data Labeling</div><div class="sk-d">Precyzyjna anotacja i kategoryzacja danych treningowych dla systemów AI/ML.</div><div class="sk-hint">kliknij ↻</div></div>
-          <div class="sk-back"><div class="sk-back-t">Data Labeling</div><div class="sk-back-d">Doświadczenie z wysoką precyzją klasyfikacji — wyniesione z 7 lat pracy przy inspekcji AOI, gdzie każda anomalia musi być poprawnie oznaczona.</div></div>
+          <div class="sk-front"><div class="sk-n">01</div><div class="sk-t">Data Labeling</div><div class="sk-d"><span data-pl>Precyzyjna anotacja i kategoryzacja danych treningowych dla systemów AI/ML.</span><span data-en style="display:none">Precise annotation and categorization of training data for AI/ML systems.</span></div><div class="sk-hint">↻</div></div>
+          <div class="sk-back"><div class="sk-back-t">Data Labeling</div><div class="sk-back-d"><span data-pl>Doświadczenie z wysoką precyzją klasyfikacji — wyniesione z 7 lat pracy przy inspekcji AOI, gdzie każda anomalia musi być poprawnie oznaczona.</span><span data-en style="display:none">High-precision classification experience from 7 years of AOI inspection work, where every anomaly must be correctly labeled.</span></div></div>
         </div>
       </div>
       <div class="sk" onclick="this.classList.toggle('flipped')">
         <div class="sk-inner">
-          <div class="sk-front"><div class="sk-n">02</div><div class="sk-t">Content Evaluation</div><div class="sk-d">Ocena AI-generowanych tekstów w języku polskim — dokładność, ton, niuanse kulturowe.</div><div class="sk-hint">kliknij ↻</div></div>
-          <div class="sk-back"><div class="sk-back-t">Content Evaluation</div><div class="sk-back-d">Native speaker z wyczuciem językowym i kulturowym. Identyfikuję błędy w tłumaczeniach, nienaturalne sformułowania i niespójności stylistyczne.</div></div>
+          <div class="sk-front"><div class="sk-n">02</div><div class="sk-t">Content Evaluation</div><div class="sk-d"><span data-pl>Ocena AI-generowanych tekstów — dokładność, ton, niuanse kulturowe.</span><span data-en style="display:none">Evaluation of AI-generated texts — accuracy, tone, cultural nuances.</span></div><div class="sk-hint">↻</div></div>
+          <div class="sk-back"><div class="sk-back-t">Content Evaluation</div><div class="sk-back-d"><span data-pl>Native speaker z wyczuciem językowym i kulturowym. Identyfikuję błędy w tłumaczeniach, nienaturalne sformułowania i niespójności stylistyczne.</span><span data-en style="display:none">Native speaker with linguistic and cultural sensitivity. I identify translation errors, unnatural phrasing and stylistic inconsistencies.</span></div></div>
         </div>
       </div>
       <div class="sk" onclick="this.classList.toggle('flipped')">
         <div class="sk-inner">
-          <div class="sk-front"><div class="sk-n">03</div><div class="sk-t">Root Cause Analysis</div><div class="sk-d">Systematyczna identyfikacja przyczyn błędów i anomalii w złożonych zbiorach danych.</div><div class="sk-hint">kliknij ↻</div></div>
-          <div class="sk-back"><div class="sk-back-t">Root Cause Analysis</div><div class="sk-back-d">Analityczne myślenie ćwiczone podczas analizy logów i raportów awarii w środowisku produkcyjnym. Znajdowanie źródła problemu, nie tylko objawów.</div></div>
+          <div class="sk-front"><div class="sk-n">03</div><div class="sk-t">Root Cause Analysis</div><div class="sk-d"><span data-pl>Systematyczna identyfikacja przyczyn błędów i anomalii w złożonych zbiorach danych.</span><span data-en style="display:none">Systematic identification of error causes and anomalies in complex datasets.</span></div><div class="sk-hint">↻</div></div>
+          <div class="sk-back"><div class="sk-back-t">Root Cause Analysis</div><div class="sk-back-d"><span data-pl>Analityczne myślenie ćwiczone podczas analizy logów i raportów awarii. Znajdowanie źródła problemu, nie tylko objawów.</span><span data-en style="display:none">Analytical thinking honed through log analysis and failure reports. Finding the root cause, not just symptoms.</span></div></div>
         </div>
       </div>
       <div class="sk" onclick="this.classList.toggle('flipped')">
         <div class="sk-inner">
-          <div class="sk-front"><div class="sk-n">04</div><div class="sk-t">Quality Assurance</div><div class="sk-d">Wysokoprecyzyjne inspekcje wizualne i logiczne (AOI) — 7+ lat praktyki przemysłowej.</div><div class="sk-hint">kliknij ↻</div></div>
-          <div class="sk-back"><div class="sk-back-t">Quality Assurance</div><div class="sk-back-d">Jabil Poland — senior level. Tworzenie procedur, dokumentacja, feedback dla inżynierów, identyfikacja edge cases w skomplikowanych systemach.</div></div>
+          <div class="sk-front"><div class="sk-n">04</div><div class="sk-t">Quality Assurance</div><div class="sk-d"><span data-pl>Wysokoprecyzyjne inspekcje wizualne i logiczne (AOI) — 7+ lat praktyki.</span><span data-en style="display:none">High-precision visual and logic-based inspections (AOI) — 7+ years of practice.</span></div><div class="sk-hint">↻</div></div>
+          <div class="sk-back"><div class="sk-back-t">Quality Assurance</div><div class="sk-back-d"><span data-pl>Jabil Poland — senior level. Tworzenie procedur, dokumentacja, feedback dla inżynierów, identyfikacja edge cases.</span><span data-en style="display:none">Jabil Poland — senior level. Creating procedures, documentation, engineer feedback, edge case identification.</span></div></div>
         </div>
       </div>
       <div class="sk" onclick="this.classList.toggle('flipped')">
         <div class="sk-inner">
-          <div class="sk-front"><div class="sk-n">05</div><div class="sk-t">Structured Feedback</div><div class="sk-d">Jasna, konkretna informacja zwrotna dla zespołów inżynieryjnych i AI training.</div><div class="sk-hint">kliknij ↻</div></div>
-          <div class="sk-back"><div class="sk-back-t">Structured Feedback</div><div class="sk-back-d">Lata pisania technicznych raportów i instrukcji wyposażyły mnie w umiejętność przekazywania złożonych informacji w sposób precyzyjny i zrozumiały.</div></div>
+          <div class="sk-front"><div class="sk-n">05</div><div class="sk-t">Structured Feedback</div><div class="sk-d"><span data-pl>Jasna, konkretna informacja zwrotna dla zespołów inżynieryjnych i AI training.</span><span data-en style="display:none">Clear, actionable feedback for engineering and AI training teams.</span></div><div class="sk-hint">↻</div></div>
+          <div class="sk-back"><div class="sk-back-t">Structured Feedback</div><div class="sk-back-d"><span data-pl>Lata pisania technicznych raportów i instrukcji wyposażyły mnie w umiejętność przekazywania złożonych informacji precyzyjnie i zrozumiale.</span><span data-en style="display:none">Years of writing technical reports and instructions have equipped me to communicate complex information precisely and clearly.</span></div></div>
         </div>
       </div>
       <div class="sk" onclick="this.classList.toggle('flipped')">
         <div class="sk-inner">
-          <div class="sk-front"><div class="sk-n">06</div><div class="sk-t">AI Business Application</div><div class="sk-d">Praktyczne zastosowanie GenAI, agentów i automatyzacji w środowisku biznesowym.</div><div class="sk-hint">kliknij ↻</div></div>
-          <div class="sk-back"><div class="sk-back-t">AI Business Application</div><div class="sk-back-d">Certyfikaty Google + AIDEAS plus projekt OWL_QUIZ_KIDS — działający automat generujący treści i grafiki z pomocą AI lokalnie w środowisku Python.</div></div>
+          <div class="sk-front"><div class="sk-n">06</div><div class="sk-t">AI Business Application</div><div class="sk-d"><span data-pl>Praktyczne zastosowanie GenAI, agentów i automatyzacji w środowisku biznesowym.</span><span data-en style="display:none">Practical application of GenAI, agents and automation in business environments.</span></div><div class="sk-hint">↻</div></div>
+          <div class="sk-back"><div class="sk-back-t">AI Business Application</div><div class="sk-back-d"><span data-pl>Certyfikaty Google + AIDEAS plus projekt OWL_QUIZ_KIDS — działający automat generujący treści i grafiki z pomocą AI lokalnie w Pythonie.</span><span data-en style="display:none">Google + AIDEAS certificates plus OWL_QUIZ_KIDS — a working Python-based AI automation pipeline generating content and graphics.</span></div></div>
         </div>
       </div>
     </div>
@@ -349,45 +337,57 @@ footer{background:#080808;padding:26px 48px;display:flex;justify-content:space-b
 <!-- EXPERIENCE -->
 <section id="experience">
   <div class="container">
-    <p class="s-label rv">Doświadczenie</p>
+    <p class="s-label rv"><span data-pl>Doświadczenie</span><span data-en style="display:none">Experience</span></p>
     <h2 class="s-title rv">Work <em>Timeline</em></h2>
     <div class="tl">
       <div class="tl-item">
         <div class="tl-period">08.2018 — 05.2025</div>
         <div class="tl-co">Jabil Poland</div>
         <div class="tl-title">Senior Test Engineer</div>
-        <div class="tl-desc">Wysokoprecyzyjne inspekcje wizualne i logiczne (AOI). Dostarczanie klarownej, konkretnej informacji zwrotnej dla zespołów inżynieryjnych. Tworzenie i udoskonalanie technicznych instrukcji roboczych — klarowność językowa i spójność proceduralna. Analiza logów i raportów awarii.</div>
+        <div class="tl-desc">
+          <span data-pl>Wysokoprecyzyjne inspekcje wizualne i logiczne (AOI). Dostarczanie klarownej, konkretnej informacji zwrotnej dla zespołów inżynieryjnych. Tworzenie i udoskonalanie technicznych instrukcji roboczych — klarowność językowa i spójność proceduralna. Analiza logów i raportów awarii.</span>
+          <span data-en style="display:none">High-precision visual and logic-based inspections (AOI). Providing clear, actionable feedback for engineering teams. Creating and refining technical work instructions — linguistic clarity and procedural consistency. Log and failure report analysis.</span>
+        </div>
         <div class="tl-tags"><span class="tag">AOI Inspection</span><span class="tag">QA Docs</span><span class="tag">Anomaly Detection</span><span class="tag">Root Cause Analysis</span></div>
       </div>
       <div class="tl-item">
         <div class="tl-period">10.2017 — 07.2018</div>
         <div class="tl-co">Animex Foods Sp. z o.o., Ełk</div>
         <div class="tl-title">Automation Technician</div>
-        <div class="tl-desc">Wsparcie zadań technicznych i automatyzacyjnych w przemysłowym środowisku produkcyjnym. Utrzymanie ciągłości produkcji i rozwiązywanie problemów sprzętowych.</div>
+        <div class="tl-desc">
+          <span data-pl>Wsparcie zadań technicznych i automatyzacyjnych w przemysłowym środowisku produkcyjnym. Utrzymanie ciągłości produkcji i rozwiązywanie problemów sprzętowych.</span>
+          <span data-en style="display:none">Supporting technical and automation tasks in an industrial production environment. Maintaining production continuity and resolving equipment issues.</span>
+        </div>
         <div class="tl-tags"><span class="tag">Industrial Automation</span><span class="tag">Production Support</span></div>
       </div>
       <div class="tl-item">
         <div class="tl-period">05.2017 — 09.2017</div>
         <div class="tl-co">Porta KMI Poland, Ełk</div>
         <div class="tl-title">Electromechanic</div>
-        <div class="tl-desc">Wsparcie przy utrzymaniu i rozwiązywaniu problemów mechanicznych i elektrycznych w obszarze produkcyjnym.</div>
+        <div class="tl-desc">
+          <span data-pl>Wsparcie przy utrzymaniu i rozwiązywaniu problemów mechanicznych i elektrycznych w obszarze produkcyjnym.</span>
+          <span data-en style="display:none">Supporting maintenance and troubleshooting of mechanical and electrical systems in the production area.</span>
+        </div>
         <div class="tl-tags"><span class="tag">Electrical Systems</span><span class="tag">Troubleshooting</span></div>
       </div>
       <div class="tl-item">
         <div class="tl-period">2013 — 2015</div>
         <div class="tl-co">Import-Service Szczepan Birkos, Olsztyn</div>
         <div class="tl-title">Complaints Specialist</div>
-        <div class="tl-desc">Obsługa reklamacji klientów i dokumentacji serwisowej. Praca z technicznymi problemami produktów AGD i komunikacja serwisowa.</div>
+        <div class="tl-desc">
+          <span data-pl>Obsługa reklamacji klientów i dokumentacji serwisowej. Praca z technicznymi problemami produktów AGD i komunikacja serwisowa.</span>
+          <span data-en style="display:none">Handling customer complaints and service documentation. Working with technical product issues and household appliance service communication.</span>
+        </div>
         <div class="tl-tags"><span class="tag">Customer Service</span><span class="tag">Technical Docs</span><span class="tag">Communication</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CERTYFIKATY -->
+<!-- CERTS -->
 <section id="certs" class="certs-bg">
   <div class="container">
-    <p class="s-label rv">Certyfikaty</p>
+    <p class="s-label rv"><span data-pl>Certyfikaty</span><span data-en style="display:none">Certificates</span></p>
     <h2 class="s-title rv">AI <em>Certifications</em></h2>
     <div class="certs-grid">
       <div class="cert-card rv-l">
@@ -412,10 +412,10 @@ footer{background:#080808;padding:26px 48px;display:flex;justify-content:space-b
   </div>
 </section>
 
-<!-- JĘZYKI -->
+<!-- LANGUAGES -->
 <section>
   <div class="container">
-    <p class="s-label rv">Języki</p>
+    <p class="s-label rv"><span data-pl>Języki</span><span data-en style="display:none">Languages</span></p>
     <h2 class="s-title rv">Languages</h2>
     <div class="lang-grid rv">
       <div>
@@ -430,14 +430,12 @@ footer{background:#080808;padding:26px 48px;display:flex;justify-content:space-b
   </div>
 </section>
 
-<!-- PROJEKTY -->
+<!-- PROJECTS -->
 <section id="projects">
   <div class="container">
-    <p class="s-label rv">Projekty</p>
+    <p class="s-label rv"><span data-pl>Projekty</span><span data-en style="display:none">Projects</span></p>
     <h2 class="s-title rv">Featured <em>Projects</em></h2>
-
-    <!-- OWL QUIZ KIDS - special dark card -->
-    <div class="proj-card owl-card rv" style="margin-bottom:18px">
+    <div class="proj-card owl-card rv">
       <div class="proj-top">
         <div>
           <div class="proj-lbl">YouTube Automation · 2025</div>
@@ -446,14 +444,12 @@ footer{background:#080808;padding:26px 48px;display:flex;justify-content:space-b
         <a href="https://www.youtube.com/channel/UCWeCwjLLoaGbWfy4EojfXtw" target="_blank" class="proj-link">YouTube ↗</a>
       </div>
       <p class="proj-desc">
-        Raczkujący, w pełni zautomatyzowany system działający lokalnie w środowisku Python. Automat samodzielnie generuje treści quizowe dla dzieci (zwierzęta, kosmos, dinozaury), tworzy grafiki, szablony i templaty, a następnie publikuje gotowe filmy na YouTube — bez ręcznej ingerencji. Projekt demonstruje praktyczne umiejętności programowania AI pipeline i automatyzacji contentu.
+        <span data-pl>Raczkujący, w pełni zautomatyzowany system działający lokalnie w środowisku Python. Automat samodzielnie generuje treści quizowe dla dzieci (zwierzęta, kosmos, dinozaury), tworzy grafiki, szablony i templaty, a następnie publikuje gotowe filmy na YouTube — bez ręcznej ingerencji.</span>
+        <span data-en style="display:none">A fledgling, fully automated system running locally in Python. The automation independently generates quiz content for children (animals, space, dinosaurs), creates graphics, templates and layouts, then publishes finished videos to YouTube — with no manual intervention.</span>
       </p>
-      <div class="proj-stack">
-        <span class="tag">Python</span><span class="tag">AI Content Generation</span><span class="tag">Image Templates</span><span class="tag">YouTube API</span><span class="tag">Local Automation</span>
-      </div>
-      <div class="yt-stat"><span class="yt-dot"></span>30 filmów · aktywny kanał · działa lokalnie</div>
+      <div class="proj-stack"><span class="tag">Python</span><span class="tag">AI Content Generation</span><span class="tag">Image Templates</span><span class="tag">YouTube API</span><span class="tag">Local Automation</span></div>
+      <div class="yt-stat"><span class="yt-dot"></span>30 <span data-pl>filmów · aktywny kanał</span><span data-en style="display:none">videos · active channel</span></div>
     </div>
-
     <div class="proj-card rv">
       <div class="proj-top">
         <div>
@@ -461,22 +457,29 @@ footer{background:#080808;padding:26px 48px;display:flex;justify-content:space-b
           <div class="proj-title">🌐 Interactive CV</div>
         </div>
       </div>
-      <p class="proj-desc">Ta strona — interaktywne portfolio z certyfikatami AI, osią czasu i formularzem kontaktowym. Zbudowane z myślą o aplikacji na stanowisko Polish Language Expert & AI Trainer.</p>
-      <div class="proj-stack">
-        <span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">Vanilla JS</span><span class="tag">Netlify</span>
-      </div>
+      <p class="proj-desc">
+        <span data-pl>Ta strona — interaktywne portfolio z certyfikatami AI, osią czasu i formularzem kontaktowym. Zbudowane z myślą o aplikacji na stanowisko Polish Language Expert & AI Trainer.</span>
+        <span data-en style="display:none">This page — an interactive portfolio with AI certificates, work timeline and contact form. Built for applications to Polish Language Expert & AI Trainer positions.</span>
+      </p>
+      <div class="proj-stack"><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">Vanilla JS</span><span class="tag">GitHub Pages</span></div>
     </div>
   </div>
 </section>
 
-<!-- KONTAKT -->
+<!-- CONTACT -->
 <section class="contact-bg" id="contact">
   <div class="container">
-    <p class="s-label rv">Kontakt</p>
-    <h2 class="s-title rv">Let's Work<br><em>Together</em></h2>
+    <p class="s-label rv"><span data-pl>Kontakt</span><span data-en style="display:none">Contact</span></p>
+    <h2 class="s-title rv">
+      <span data-pl>Porozmawiajmy<br><em>o współpracy</em></span>
+      <span data-en style="display:none">Let's Work<br><em>Together</em></span>
+    </h2>
     <div class="contact-inner">
       <div>
-        <p class="contact-desc">Szukam projektów z zakresu AI training, Polish language evaluation i QA. Dostępny zdalnie, elastyczne godziny 10–40h/tydzień. Praca zdalna idealna ze względu na status osoby z niepełnosprawnością.</p>
+        <p class="contact-desc">
+          <span data-pl>Szukam projektów z zakresu AI training, Polish language evaluation i QA. Dostępny zdalnie, elastyczne godziny 10–40h/tydzień. Praca zdalna idealna ze względu na status osoby z niepełnosprawnością.</span>
+          <span data-en style="display:none">Looking for projects in AI training, Polish language evaluation and QA. Available remotely, flexible hours 10–40h/week. Remote work is ideal due to disability status.</span>
+        </p>
         <div class="clinks">
           <a href="mailto:dawidar27@gmail.com" class="clink">
             <span class="clink-icon">✉</span>
@@ -484,23 +487,27 @@ footer{background:#080808;padding:26px 48px;display:flex;justify-content:space-b
           </a>
           <a href="#" class="clink">
             <span class="clink-icon">📍</span>
-            <div><span class="clink-lbl">Lokalizacja</span>Grudziądz, Poland · Remote OK</div>
+            <div><span class="clink-lbl"><span data-pl>Lokalizacja</span><span data-en style="display:none">Location</span></span>Grudziądz, Poland · Remote OK</div>
           </a>
           <a href="https://www.youtube.com/channel/UCWeCwjLLoaGbWfy4EojfXtw" target="_blank" class="clink">
             <span class="clink-icon">🦉</span>
-            <div><span class="clink-lbl">YouTube</span>OWL_QUIZ_KIDS Channel</div>
+            <div><span class="clink-lbl">YouTube</span>OWL_QUIZ_KIDS</div>
           </a>
         </div>
       </div>
       <div class="cf">
         <div class="fr">
-          <div class="ff"><label>Imię *</label><input type="text" id="fi" placeholder="Jan Kowalski"></div>
+          <div class="ff"><label><span data-pl>Imię</span><span data-en style="display:none">Name</span> *</label><input type="text" id="fi" placeholder="Jan Kowalski"></div>
           <div class="ff"><label>Email *</label><input type="email" id="fe" placeholder="jan@firma.com"></div>
         </div>
-        <div class="ff"><label>Temat</label><input type="text" id="fs" placeholder="Propozycja współpracy"></div>
-        <div class="ff"><label>Wiadomość *</label><textarea id="fm" placeholder="Cześć Dawid..."></textarea></div>
-        <button class="btn-send" onclick="sendForm()">Wyślij wiadomość →</button>
-        <div class="fsuccess" id="ok">✓ Dziękuję! Odpiszę wkrótce.</div>
+        <div class="ff"><label><span data-pl>Temat</span><span data-en style="display:none">Subject</span></label><input type="text" id="fs" placeholder="..."></div>
+        <div class="ff"><label><span data-pl>Wiadomość</span><span data-en style="display:none">Message</span> *</label><textarea id="fm" placeholder="..."></textarea></div>
+        <button class="btn-send" onclick="sendForm()">
+          <span data-pl>Wyślij wiadomość →</span><span data-en style="display:none">Send message →</span>
+        </button>
+        <div class="fsuccess" id="ok">
+          <span data-pl>✓ Dziękuję! Odpiszę wkrótce.</span><span data-en style="display:none">✓ Thank you! I'll reply soon.</span>
+        </div>
       </div>
     </div>
   </div>
@@ -512,6 +519,29 @@ footer{background:#080808;padding:26px 48px;display:flex;justify-content:space-b
 </footer>
 
 <script>
+// ── LANGUAGE SWITCH ──
+let currentLang = localStorage.getItem('lang') || 'pl';
+
+function setLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('lang', lang);
+  document.getElementById('btn-pl').classList.toggle('active', lang==='pl');
+  document.getElementById('btn-en').classList.toggle('active', lang==='en');
+  document.documentElement.lang = lang;
+
+  const showPl = lang === 'pl';
+  document.querySelectorAll('[data-pl]').forEach(el => {
+    el.style.display = showPl ? '' : 'none';
+  });
+  document.querySelectorAll('[data-en]').forEach(el => {
+    el.style.display = showPl ? 'none' : '';
+  });
+}
+
+// Init on load
+setLang(currentLang);
+
+// ── CURSOR ──
 const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
 let mx=0,my=0,rx=0,ry=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
@@ -521,6 +551,7 @@ document.querySelectorAll('a,button,.cert-card,.proj-card,.sk,.photo-wrap').forE
   el.addEventListener('mouseleave',()=>{cur.classList.remove('h');ring.classList.remove('h')});
 });
 
+// ── NAV SCROLL ──
 window.addEventListener('scroll',()=>{
   document.getElementById('nav').classList.toggle('scrolled',scrollY>10);
   const y=scrollY;
@@ -528,18 +559,22 @@ window.addEventListener('scroll',()=>{
   document.querySelector('.blob2').style.transform=`translateY(${-y*.12}px)`;
 });
 
+// ── REVEAL ──
 const io=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('vis'),i*90);io.unobserve(e.target)}})},{threshold:.08});
 document.querySelectorAll('.rv,.rv-l,.rv-r').forEach(el=>io.observe(el));
 
 const tlIo=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('vis'),i*160);tlIo.unobserve(e.target)}})},{threshold:.1});
 document.querySelectorAll('.tl-item').forEach(el=>tlIo.observe(el));
 
+// ── LANG BARS ──
 const lIo=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.lang-fill').forEach(b=>b.style.width=b.dataset.w+'%');lIo.unobserve(e.target)}})},{threshold:.3});
 document.querySelectorAll('.lang-grid').forEach(el=>lIo.observe(el));
 
+// ── COUNTERS ──
 const cIo=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('[data-target]').forEach(el=>{const t=+el.dataset.target;let c=0;const iv=setInterval(()=>{c=Math.min(c+1,t);el.textContent=c+'+';if(c>=t)clearInterval(iv)},60)});cIo.unobserve(e.target)}})},{threshold:.5});
 document.querySelectorAll('.hero-stats').forEach(el=>cIo.observe(el));
 
+// ── 3D CERT TILT ──
 document.querySelectorAll('.cert-card').forEach(card=>{
   card.addEventListener('mousemove',e=>{
     const r=card.getBoundingClientRect();
@@ -550,13 +585,14 @@ document.querySelectorAll('.cert-card').forEach(card=>{
   card.addEventListener('mouseleave',()=>{card.style.transform=''});
 });
 
+// ── CONTACT FORM ──
 function sendForm(){
   const i=document.getElementById('fi').value;
   const e=document.getElementById('fe').value;
   const s=document.getElementById('fs').value;
   const m=document.getElementById('fm').value;
-  if(!i||!e||!m){alert('Wypełnij wymagane pola!');return}
-  window.location.href=`mailto:dawidar27@gmail.com?subject=${encodeURIComponent(s||'Kontakt ze strony')}&body=${encodeURIComponent('Od: '+i+'\nEmail: '+e+'\n\n'+m)}`;
+  if(!i||!e||!m){alert(currentLang==='pl'?'Wypełnij wymagane pola!':'Please fill required fields!');return}
+  window.location.href=`mailto:dawidar27@gmail.com?subject=${encodeURIComponent(s||'Contact')}&body=${encodeURIComponent('From: '+i+'\nEmail: '+e+'\n\n'+m)}`;
   document.getElementById('ok').style.display='block';
 }
 </script>
